@@ -7,7 +7,7 @@ Render Jupyter Notebooks as HTML using JavaScript
 
 ## Motivation
 
-I regularly use [Jupyter notebooks](https://jupyter.org/) for Python projects and often upload the results as GitHub repos or Gists.  My blog posts usually contain close to the same content as the Jupyter notebooks they're based on, so why not use the .ipynb file as the source?  This script allows me to upload a notebook, then access it and convert to HTML when my blog page loads.  That way, if push new changes to the notebook code, my blog post will automatically update as well.  
+I regularly use [Jupyter notebooks](https://jupyter.org/) for Python projects and often upload the results as GitHub repos or Gists.  My blog posts usually contain close to the same content as the Jupyter notebooks they're based on, so why not use the .ipynb file as the source?  This script allows me to upload a notebook, then access it and convert to HTML when my blog page loads.  That way, if I push new changes to the notebook code, my blog post will automatically update as well.  
 
 ## Usage
 
@@ -67,7 +67,7 @@ If you want code highlighting, [highlightjs](https://github.com/isagalaev/highli
 
 <script>
 var settings = {
-	'codehighlighter': 'highlightjs'
+    'codehighlighter': 'highlightjs'
 }
 
 var id = 'notebook';
@@ -85,7 +85,7 @@ The built-in markdown converter (courtesy of [mmd.js](https://github.com/p01/mmd
 
 <script>
 var settings = {
-	'mdconverter': 'showdown'
+    'mdconverter': 'showdown'
 }
 
 var id = 'notebook';
@@ -99,13 +99,13 @@ If you'd prefer to manipulate the raw HTML string before inserting it manually, 
 
 ```javascript
 var settings = {
-	'mdconverter': 'showdown'
+    'mdconverter': 'showdown'
 }
 
 function highlightCallback(html) {
 
-	//Manipulate, then insert html
-	html = '<h1>Add a New Headline</h1>' + html;
+    //Manipulate, then insert html
+    html = '<h1>Add a New Headline</h1>' + html;
     var el = document.getElementById('notebook');
     el.insertAdjacentHTML('beforeend', html);
 
