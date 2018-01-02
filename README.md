@@ -1,4 +1,4 @@
-# notebook.js
+# notebook-html
 
 `.ipynb` -> `HTML`, in `JavaScript`
 
