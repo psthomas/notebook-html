@@ -4,7 +4,7 @@
     var globalObject = typeof window === 'object' && window ||
                        typeof self === 'object' && self;
 
-    // Setup highlight.js for different environments. First is Node.js or
+    // Setup nb.js for different environments. First is Node.js or
     // CommonJS.
     if (typeof exports !== 'undefined') {
         factory(exports);
