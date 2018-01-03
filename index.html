@@ -1,0 +1,65 @@
+<!doctype html>
+<head>
+<style>
+body {
+    max-width: 900px;
+    margin: 40px auto;
+    /*font-family: sans-serif;*/
+}
+</style>
+
+<!--load nb.js script-->
+<script src='http://rawgit.com/psthomas/notebook-html/master/nb.min.js'></script>
+
+<!--highlight.js-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/default.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js"></script>
+
+</head>
+
+<h1>notebook-html</h1>
+<p>Give the converter a try below.  Just input the url for the raw content for one of your notebooks and click render to see the results.  This <a href="https://github.com/psthomas/notebook-html/blob/master/index.html">example</a> uses a few of the custom settings, including <a href="https://github.com/isagalaev/highlight.js/">highlightjs</a> code highlighting.</p>
+
+<form>
+<input id="url" type="text" size="70" value="https://raw.githubusercontent.com/psthomas/risk-return/master/returns.ipynb"/>
+<input id="click" type="button" value="Render" onclick="renderNotebook();"/>
+</form>
+
+<body>
+<div id="notebook"> 
+<!--Inserts Notebook HTML here-->
+</div>
+
+
+
+<script>
+var settings = {
+    'code': true,              //Include code cells
+    'markdown': true,          //Include markdown cells
+    'tables': true,            //Include html data tables
+    'images': true,            //Include .png outputs 
+    'headline': true,          //Removes the first <h1> headline, useful if page has title already
+    'tableoutline': true,      //Removes the black table outline
+    'codehighlighter': 'highlightjs', //Code highlighting. Options: 'none', 'highlightjs', 'prettyprint'
+    'mdconverter': 'default'   //Use included simple markdown converter.  Options: 'default', 'showdown'
+};
+
+function renderNotebook() {
+
+    function callback(html) {
+
+        //Replace html rater than inserting at end
+        //so people can try multiple notebooks
+        var el = document.getElementById('notebook');
+        el.innerHTML =  html;
+
+        hljs.initHighlighting();
+    }
+
+    var url = document.getElementById('url').value;
+    nb.returnNotebook(url, callback, settings);
+}
+</script>
+
+</body>
+</html>
