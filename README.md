@@ -46,7 +46,7 @@ var settings = {
     'markdown': true,          //Include markdown cells
     'tables': true,            //Include html data tables
     'images': true,            //Include .png outputs 
-    'headline': false,         //Removes the first <h1> headline, useful if page has title already
+    'headline': true,          //Include the first <h1> headline, removing is useful if page has title already
     'tableoutline': false,     //Removes the black table outline
     'codehighlighter': 'none', //No code highlighting. Options: 'none', 'highlightjs', 'prettyprint'
     'mdconverter': 'default'   //Use included simple markdown converter.  Options: 'default', 'showdown'

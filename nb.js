@@ -143,7 +143,7 @@
             var converter = new showdown.Converter();
             var html = converter.makeHtml(cell.source.join(''));
         } else {
-            console.log('Using internal markdown converter.')
+            //console.log('Using internal markdown converter.')
             var html = mmd(cell.source.join(''));
         }
 
@@ -189,7 +189,7 @@
             'markdown': true,
             'tables': true,
             'images': true,
-            'headline': false,
+            'headline': true,
             'tableoutline': false,
             'codehighlighter': 'none',
             'mdconverter': 'default'
