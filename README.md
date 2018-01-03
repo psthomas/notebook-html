@@ -2,7 +2,7 @@
 
 `.ipynb` -> `HTML`, in `JavaScript`
 
-Render Jupyter Notebooks as HTML using JavaScript
+Render Jupyter Notebooks as HTML using JavaScript.  Try it out [here](https://psthomas.github.io/notebook-html/).
 
 
 ## Motivation
