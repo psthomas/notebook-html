@@ -7,7 +7,7 @@ Render Jupyter Notebooks as HTML using JavaScript.  Try it out [here](https://ps
 
 ## Motivation
 
-I regularly use [Jupyter notebooks](https://jupyter.org/) for Python projects and often upload the results as GitHub repos or Gists.  My blog posts usually contain close to the same content as the Jupyter notebooks they're based on, so why not use the .ipynb file as the source?  This script allows me to upload a notebook, then access it and convert to HTML when my blog page loads.  That way, if I push new changes to the notebook code, my blog post will automatically update as well.  
+I regularly use [Jupyter notebooks](https://jupyter.org/) for Python projects and often upload the results as GitHub repos or Gists.  My blog posts usually contain close to the same content as the Jupyter notebooks they're based on, so why not use the .ipynb file as the source?  That way, if I push new changes to the notebook code, my blog post will automatically update as well.  
 
 ## Usage
 
