@@ -133,12 +133,12 @@ Note that the HTML initially won't have code highlighting if you return it as a 
 
 This project is in it's early stages and I've mainly built it by testing it on my own notebooks -- it's by no means comprehensive.  Here are a few TODO items:
 
-- [] Investigate all Jupyter cell types, all cell sources and outputs to increase coverage.  See [here](https://nbformat.readthedocs.io/en/latest/format_description.html#notebook-file-format) for cell types.    
-- [] Build HTML without strings, possibly dynamically inserting into DOM to load quicker  
-- [] Handle image types other than png 
+- [ ] Investigate all Jupyter cell types, all cell sources and outputs to increase coverage.  See [here](https://nbformat.readthedocs.io/en/latest/format_description.html#notebook-file-format) for cell types.    
+- [ ] Build HTML without strings, possibly dynamically inserting into DOM to load quicker  
+- [ ] Handle image types other than png 
 - [x] Figure out how to pass in custom markdown converter functions, not just use default ones  
-- [] Maybe allow collapsing of cells, using reddit/hackernews style collapsing
-- [] See if it's possible to use the Jupyter cell "collapsed" attribute to selectively exclude (or collapse) cells 
+- [ ] Maybe allow collapsing of cells, using reddit/hackernews style collapsing
+- [ ] See if it's possible to use the Jupyter cell "collapsed" attribute to selectively exclude (or collapse) cells 
 
 ## License
 
