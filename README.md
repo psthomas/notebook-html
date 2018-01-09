@@ -7,7 +7,7 @@ Render Jupyter Notebooks as HTML using JavaScript.  Try it out [here](https://ps
 
 ## Motivation
 
-I regularly use [Jupyter notebooks](https://jupyter.org/) for Python projects and often upload the results as GitHub repos or Gists.  My blog posts usually contain close to the same content as the Jupyter notebooks they're based on, so why not use the .ipynb file as the source?  That way, if I push new changes to the notebook code, my blog post will automatically update as well.  
+I regularly use [Jupyter notebooks](https://jupyter.org/) for Python projects and often upload the results as GitHub repos or Gists.  My blog posts usually contain similar content to the Jupyter notebooks they're based on, so why not use the .ipynb file as the source?  That way, if I push new changes to the notebook code, my blog post will automatically be up to date as well.  
 
 ## Usage
 
@@ -46,10 +46,10 @@ var settings = {
     'markdown': true,          //Include markdown cells
     'tables': true,            //Include html data tables
     'images': true,            //Include .png outputs 
-    'headline': true,          //Include the first <h1> headline, removing is useful if page has title already
+    'headline': true,          //Include the first <h*> headline, removing is useful if page has title already
     'tableoutline': false,     //Removes the black table outline
     'codehighlighter': 'none', //No code highlighting. Options: 'none', 'highlightjs', 'prettyprint'
-    'mdconverter': 'default'   //Use included simple markdown converter.  Options: 'default', 'showdown'
+    'mdconverter': 'default'   //Use included simple markdown converter.  Options: 'default', showdown object
 };
 
 var id = 'notebook';
@@ -77,15 +77,21 @@ nb.insertNotebook(url, id, settings);
 
 ```
 
-The built-in markdown converter (courtesy of [mmd.js](https://github.com/p01/mmd.js/blob/master/mmd.js)) does a good job, but sometimes the markdown is too complicated.  In these cases, you can load [showdown.js](https://github.com/showdownjs/showdown) and pass it as a setting:
+The built-in markdown converter (courtesy of [mmd.js](https://github.com/p01/mmd.js/blob/master/mmd.js)) does a good job, but sometimes the markdown is too complicated.  In these cases, you can load [showdown.js](https://github.com/showdownjs/showdown) and pass a custom converter object as a setting:
 
 ```html
 <!--showdown.js-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.8.6/showdown.min.js"></script>
 
 <script>
+
+//Create converter object and modify some settings
+var converter = new showdown.Converter();
+converter.setOption('headerLevelStart', 2); //Maximum header is <h2>
+converter.setFlavor('github'); //Use Github flavored markdown
+
 var settings = {
-    'mdconverter': 'showdown'
+    'mdconverter': converter
 }
 
 var id = 'notebook';
@@ -98,8 +104,10 @@ nb.insertNotebook(url, id, settings);
 If you'd prefer to manipulate the raw HTML string before inserting it manually, you can pass a callback function to the `returnNotebook` function.  For example, sometimes `highlightjs` doesn't correctly identify the language I'm using, so I can set some preferences and do the highlighting myself:
 
 ```javascript
+
 var settings = {
-    'mdconverter': 'showdown'
+    'code': true,
+    'markdown': true
 }
 
 function highlightCallback(html) {
@@ -125,12 +133,12 @@ Note that the HTML initially won't have code highlighting if you return it as a 
 
 This project is in it's early stages and I've mainly built it by testing it on my own notebooks -- it's by no means comprehensive.  Here are a few TODO items:
 
-* Investigate all Jupyter cell types, all cell sources and outputs to increase coverage.  See [here](https://nbformat.readthedocs.io/en/latest/format_description.html#notebook-file-format) for cell types.    
-* Build HTML without strings, possibly dynamically inserting into DOM to load quicker  
-* Handle image types other than png 
-* Figure out how to pass in custom markdown converter functions, not just use default ones  
-* Maybe allow collapsing of cells, using reddit/hackernews style collapsing
-* See if it's possible to use the Jupyter cell "collapsed" attribute to selectively exclude (or collapse) cells 
+- [] Investigate all Jupyter cell types, all cell sources and outputs to increase coverage.  See [here](https://nbformat.readthedocs.io/en/latest/format_description.html#notebook-file-format) for cell types.    
+- [] Build HTML without strings, possibly dynamically inserting into DOM to load quicker  
+- [] Handle image types other than png 
+- [x] Figure out how to pass in custom markdown converter functions, not just use default ones  
+- [] Maybe allow collapsing of cells, using reddit/hackernews style collapsing
+- [] See if it's possible to use the Jupyter cell "collapsed" attribute to selectively exclude (or collapse) cells 
 
 ## License
 

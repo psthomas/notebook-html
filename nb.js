@@ -139,8 +139,8 @@
 
         //TODO: Originally wanted to be able to pass in a custom converter function
         //from showdown, others, but ran into issues with object scope of function
-        if (settings.mdconverter === 'showdown' && typeof showdown !== 'undefined') {
-            var converter = new showdown.Converter();
+        if (typeof settings.mdconverter === 'object' && typeof showdown !== 'undefined') {
+            //var converter = new showdown.Converter();
             var html = converter.makeHtml(cell.source.join(''));
         } else {
             //console.log('Using internal markdown converter.')
@@ -149,8 +149,10 @@
 
         if (!settings.headline && i === 0) {
             //var re = new RegExp('<h1>(.*?)<\/h1>');
-            //Replace only first instance, ,"g" for more 
-            var re = new RegExp('<h1(.*?)<\/h1>');
+            //Replace only first instance, ,"g" for more
+            //var re = new RegExp('<h1(.*?)<\/h1>');
+            //Match any level first header
+            var re = new RegExp('<h([0-9])(.*?)<\/h([0-9])>'); 
             html = html.replace(re, '');  
         }
 

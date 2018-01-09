@@ -10,6 +10,7 @@ body {
 
 <!--load nb.js script-->
 <script src='https://rawgit.com/psthomas/notebook-html/master/nb.min.js'></script>
+<!-- <script src="./nb.js"></script> -->
 
 <!--highlight.js-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/default.min.css">
@@ -36,15 +37,18 @@ body {
 
 
 <script>
+
+var converter = new showdown.Converter();
+
 var settings = {
     'code': true,              //Include code cells
     'markdown': true,          //Include markdown cells
     'tables': true,            //Include html data tables
     'images': true,            //Include .png outputs 
-    'headline': true,          //Include the first <h1> headline, removing useful if page has title already
+    'headline': true,          //Include the first <h*> headline, removing useful if page has title already
     'tableoutline': true,      //Includes the black table outline
     'codehighlighter': 'highlightjs', //Code highlighting. Options: 'none', 'highlightjs', 'prettyprint'
-    'mdconverter': 'showdown'   //Use included simple markdown converter.  Options: 'default', 'showdown'
+    'mdconverter': converter   //Use included simple markdown converter.  Options: 'default', showdown object
 };
 
 function renderNotebook() {
